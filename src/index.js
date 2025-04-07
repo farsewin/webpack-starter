@@ -1,7 +1,7 @@
 import './styles/main.scss';
 
-// Check if service workers are supported
-if ('serviceWorker' in navigator) {
+// Check if service workers are supported and we're in production mode
+if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
   window.addEventListener('load', () => {
     navigator.serviceWorker
       .register('/service-worker.js')

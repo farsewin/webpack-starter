@@ -9,7 +9,7 @@ module.exports = merge(common, {
     open: true,
     hot: true,
     historyApiFallback: true,
-    port: 8080,
+    port: 8081,
     client: {
       overlay: {
         errors: true,

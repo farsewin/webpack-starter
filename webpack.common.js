@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const sassEmbedded = require('sass-embedded');
 
 module.exports = {
   entry: './src/index.js',
@@ -28,7 +29,16 @@ module.exports = {
             ? 'style-loader'
             : MiniCssExtractPlugin.loader,
           'css-loader',
-          'sass-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: sassEmbedded,
+              sassOptions: {
+                outputStyle: 'expanded',
+              },
+              webpackImporter: false,
+            },
+          },
         ],
       },
       {
